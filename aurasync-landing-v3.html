@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AuraSync — Το All-in-One Σύστημα για Κουρεία</title>
+<meta name="description" content="Ελληνικό SaaS για κουρεία. Online Booking, AI Bot, SMS Reminders, Reviews, Reactivation & Premium Website — όλα σε μία πλατφόρμα.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --bg:#0e0e0e;
+  --bg-alt:#141414;
+  --bg-alt-2:#1a1a1a;
+  --card:#222222;
+  --card-hover:#2a2a2a;
+  --border:#333333;
+  --gold:#D4A853;
+  --gold-soft:rgba(212,168,83,0.4);
+  --gold-glow:rgba(212,168,83,0.15);
+  --white:#ffffff;
+  --text:#b0b0b0;
+  --text-dim:#888888;
+  --green:#22c55e;
+  --red:#ef4444;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Outfit', system-ui, -apple-system, sans-serif;
+  --maxw:1180px;
+  --radius:14px;
+  --radius-sm:8px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  font-weight:400;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  color:var(--white);
+  font-weight:600;
+  line-height:1.15;
+  letter-spacing:-0.01em;
+}
+h1{font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:500;}
+h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:500;}
+h3{font-size:clamp(1.25rem,2vw,1.55rem);}
+h4{font-size:1.15rem;}
+
+.eyebrow{
+  font-family:var(--sans);
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1rem;
+  display:inline-block;
+}
+
+.section-sub{
+  font-size:1.05rem;
+  color:var(--text);
+  max-width:680px;
+  margin:1.2rem auto 0;
+}
+
+.container{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 1.5rem;
+}
+
+section{
+  padding:7rem 0;
+  position:relative;
+}
+section.alt{background:var(--bg-alt);}
+section.alt2{background:var(--bg-alt-2);}
+
+.section-head{
+  text-align:center;
+  margin-bottom:4rem;
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  padding:0.95rem 1.8rem;
+  border-radius:999px;
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:0.97rem;
+  letter-spacing:0.01em;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition:all 0.25s ease;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--gold);
+  color:#0e0e0e;
+  border-color:var(--gold);
+}
+.btn-primary:hover{
+  background:#e0b865;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px -10px rgba(212,168,83,0.5);
+}
+.btn-ghost{
+  background:transparent;
+  color:var(--white);
+  border-color:rgba(255,255,255,0.25);
+}
+.btn-ghost:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.btn-lg{padding:1.1rem 2.2rem;font-size:1.02rem;}
+
+/* NAV */
+nav.navbar{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  padding:1.1rem 0;
+  transition:all 0.3s ease;
+  background:transparent;
+}
+nav.navbar.scrolled{
+  background:rgba(14,14,14,0.78);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 1.5rem;
+}
+.logo{
+  font-family:var(--serif);
+  font-size:1.7rem;
+  font-weight:500;
+  letter-spacing:-0.01em;
+}
+.logo .aura{color:var(--white);}
+.logo .sync{color:var(--gold);font-style:italic;font-weight:600;}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:2.2rem;
+  list-style:none;
+}
+.nav-links a{
+  font-size:0.92rem;
+  color:#d8d8d8;
+  font-weight:400;
+  transition:color 0.2s ease;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{
+  background:var(--gold);
+  color:#0e0e0e !important;
+  padding:0.55rem 1.2rem;
+  border-radius:999px;
+  font-weight:500;
+}
+.nav-cta:hover{background:#e0b865;}
+
+.hamburger{
+  display:none;
+  background:none;
+  border:none;
+  color:var(--white);
+  font-size:1.4rem;
+  cursor:pointer;
+  padding:0.4rem;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:9rem 1.5rem 5rem;
+  background-image:url('AurasyncHerosection.png');
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.82) 0%,
+    rgba(0,0,0,0.55) 50%,
+    rgba(0,0,0,0.85) 100%
+  );
+  z-index:1;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:920px;
+  margin:0 auto;
+}
+.hero h1{
+  margin:1.2rem 0 1.4rem;
+  color:var(--white);
+  text-shadow:0 2px 30px rgba(0,0,0,0.4);
+}
+.hero h1 .accent{
+  font-style:italic;
+  color:var(--gold);
+  font-weight:500;
+}
+.hero p.sub{
+  font-size:clamp(1.05rem,1.4vw,1.22rem);
+  color:#e0e0e0;
+  max-width:680px;
+  margin:0 auto 2.4rem;
+  line-height:1.6;
+}
+.hero-ctas{
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:2.5rem;
+}
+.trust-badges{
+  display:flex;
+  gap:1.8rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  font-size:0.88rem;
+  color:#cfcfcf;
+}
+.trust-badges span{display:inline-flex;align-items:center;gap:0.4rem;}
+.trust-badges i{color:var(--gold);}
+
+/* LIVE DEMO */
+.live-demo-section{
+  background:var(--bg);
+  padding:5rem 0;
+}
+.live-demo-box{
+  max-width:880px;
+  margin:0 auto;
+  background:var(--bg-alt);
+  border:1px solid var(--gold-soft);
+  border-radius:var(--radius);
+  padding:2.6rem;
+  text-align:center;
+  position:relative;
+}
+.live-demo-box::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:var(--radius);
+  background:radial-gradient(ellipse at top,var(--gold-glow),transparent 60%);
+  pointer-events:none;
+}
+.live-demo-box > *{position:relative;}
+.live-demo-caption{
+  font-size:1.05rem;
+  color:#d0d0d0;
+  margin-bottom:1.8rem;
+  max-width:620px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.demo-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+.demo-btn{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.4rem;
+  padding:1.4rem 1.2rem;
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,0.02);
+  transition:all 0.25s ease;
+  text-align:center;
+}
+.demo-btn:hover{
+  border-color:var(--gold);
+  background:rgba(212,168,83,0.05);
+  transform:translateY(-2px);
+}
+.demo-btn i{font-size:1.7rem;color:var(--gold);margin-bottom:0.3rem;}
+.demo-btn .label{font-weight:500;color:var(--white);font-size:1rem;}
+.demo-btn .sub{font-size:0.82rem;color:var(--text-dim);line-height:1.4;}
+
+/* PROBLEMS */
+.problems-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.5rem;
+}
+.problem-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:2rem 1.7rem;
+  transition:all 0.3s ease;
+}
+.problem-card:hover{
+  border-color:rgba(239,68,68,0.35);
+  transform:translateY(-3px);
+}
+.problem-icon{
+  width:48px;height:48px;
+  border-radius:10px;
+  background:rgba(239,68,68,0.12);
+  border:1px solid rgba(239,68,68,0.25);
+  display:flex;align-items:center;justify-content:center;
+  color:#ef4444;
+  font-size:1.15rem;
+  margin-bottom:1.3rem;
+}
+.problem-card h3{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:1.1rem;
+  margin-bottom:0.6rem;
+  color:var(--white);
+  letter-spacing:-0.01em;
+}
+.problem-card p{font-size:0.93rem;color:var(--text);}
+
+/* FEATURES */
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.feature-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:2.2rem 1.9rem;
+  position:relative;
+  transition:all 0.3s ease;
+}
+.feature-card:hover{
+  border-color:var(--gold-soft);
+  background:var(--card-hover);
+  transform:translateY(-4px);
+}
+.feature-icon{
+  width:48px;height:48px;
+  border-radius:10px;
+  background:rgba(212,168,83,0.1);
+  border:1px solid var(--gold-soft);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);
+  font-size:1.2rem;
+  margin-bottom:1.4rem;
+}
+.feature-card .tag{
+  position:absolute;
+  top:1.7rem;right:1.7rem;
+  font-size:0.68rem;
+  letter-spacing:0.1em;
+  font-weight:500;
+  color:var(--gold);
+  background:transparent;
+  border:1px solid var(--gold-soft);
+  padding:0.28rem 0.7rem;
+  border-radius:999px;
+  text-transform:uppercase;
+}
+.feature-card h3{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:1.18rem;
+  margin-bottom:0.7rem;
+  color:var(--white);
+  letter-spacing:-0.01em;
+}
+.feature-card p{font-size:0.94rem;}
+
+.section-footnote{
+  text-align:center;
+  font-size:0.82rem;
+  color:var(--text-dim);
+  margin-top:2.5rem;
+  font-style:italic;
+}
+
+/* WEBSITE SECTION */
+.website-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  margin:3.5rem 0 3rem;
+}
+.website-col{
+  text-align:center;
+  padding:2.4rem 1.6rem;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  transition:all 0.3s ease;
+}
+.website-col:hover{
+  border-color:var(--gold-soft);
+  transform:translateY(-3px);
+}
+.website-col i{
+  font-size:1.9rem;
+  color:var(--gold);
+  margin-bottom:1.2rem;
+  display:block;
+}
+.website-col h4{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:1.1rem;
+  color:var(--white);
+  margin-bottom:0.6rem;
+  letter-spacing:-0.01em;
+}
+.website-col p{font-size:0.93rem;color:var(--text);line-height:1.6;}
+.website-cta-wrap{text-align:center;margin-top:2rem;}
+
+/* COMPARISON */
+.table-wrap{overflow-x:auto;border-radius:var(--radius);}
+.comparison{
+  width:100%;
+  min-width:680px;
+  border-collapse:collapse;
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.comparison th,
+.comparison td{
+  padding:1.05rem 1.1rem;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+  font-size:0.93rem;
+}
+.comparison th{
+  background:var(--bg-alt-2);
+  color:#d0d0d0;
+  font-weight:500;
+  text-transform:none;
+  letter-spacing:0;
+  font-size:0.88rem;
+}
+.comparison th.aurasync-col{
+  background:var(--gold);
+  color:#0e0e0e;
+  font-weight:600;
+  font-family:var(--serif);
+  font-size:1.05rem;
+}
+.comparison td:first-child{color:var(--white);font-weight:500;}
+.comparison .yes{color:var(--green);font-weight:600;}
+.comparison .no{color:var(--red);font-weight:600;}
+.comparison .aurasync-cell{
+  background:rgba(212,168,83,0.04);
+  color:#f0f0f0;
+}
+.comparison tr:hover td{background:rgba(212,168,83,0.025);}
+.comparison .cost-row .aurasync-cell{
+  background:rgba(212,168,83,0.12);
+  border:2px solid var(--gold);
+  font-weight:600;
+}
+.comparison-tagline{
+  text-align:center;
+  margin-top:2rem;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.2rem;
+  color:#d8d8d8;
+}
+
+/* HOW IT WORKS */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+  counter-reset:step;
+}
+.step{
+  position:relative;
+  padding:2rem 1.5rem;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+.step .step-num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:2.5rem;
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:1rem;
+  font-weight:500;
+}
+.step h3{margin-bottom:0.5rem;}
+.step p{font-size:0.92rem;}
+
+/* PRICING */
+.pricing-wrap{
+  display:flex;
+  justify-content:center;
+}
+.pricing-card{
+  background:var(--card);
+  border:2px solid var(--gold);
+  border-radius:var(--radius);
+  padding:3rem 2.5rem;
+  max-width:480px;
+  width:100%;
+  text-align:center;
+  position:relative;
+  box-shadow:0 30px 80px -30px rgba(212,168,83,0.25);
+}
+.pricing-badge{
+  position:absolute;
+  top:-14px;left:50%;
+  transform:translateX(-50%);
+  background:var(--gold);
+  color:#0e0e0e;
+  padding:0.35rem 1.1rem;
+  border-radius:999px;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.12em;
+  white-space:nowrap;
+}
+.pricing-card h3{
+  font-size:1.7rem;
+  margin-bottom:1.4rem;
+}
+.price-row{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:0.5rem;
+  margin-bottom:0.6rem;
+}
+.price-old{
+  font-family:var(--serif);
+  color:#c5c5c5;
+  font-size:1.7rem;
+  text-decoration:line-through;
+  text-decoration-color:rgba(239,68,68,0.7);
+  text-decoration-thickness:2px;
+  opacity:0.85;
+}
+.price-new{
+  font-family:var(--serif);
+  color:var(--white);
+  font-size:3.6rem;
+  font-weight:500;
+  line-height:1;
+}
+.price-period{color:var(--text);font-size:1rem;}
+.setup-line{
+  color:var(--gold);
+  font-size:0.92rem;
+  letter-spacing:0.06em;
+  margin-bottom:2rem;
+  font-weight:500;
+}
+.feature-list{
+  list-style:none;
+  text-align:left;
+  margin:0 0 2rem;
+}
+.feature-list li{
+  padding:0.6rem 0;
+  font-size:0.95rem;
+  color:#d8d8d8;
+  display:flex;
+  gap:0.7rem;
+  align-items:flex-start;
+}
+.feature-list li i{color:var(--gold);margin-top:0.3rem;}
+.pricing-note{
+  font-size:0.82rem;
+  color:var(--text-dim);
+  margin-top:1.2rem;
+}
+
+/* FAQ */
+.faq-list{max-width:820px;margin:0 auto;}
+.faq-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  margin-bottom:0.8rem;
+  overflow:hidden;
+  transition:border-color 0.25s ease;
+}
+.faq-item.open{border-color:var(--gold-soft);}
+.faq-q{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1.3rem 1.5rem;
+  background:transparent;
+  border:none;
+  color:var(--white);
+  font-family:var(--sans);
+  font-size:1.02rem;
+  font-weight:500;
+  text-align:left;
+  cursor:pointer;
+}
+.faq-q i{
+  color:var(--gold);
+  font-size:0.9rem;
+  transition:transform 0.3s ease;
+}
+.faq-item.open .faq-q i{transform:rotate(180deg);}
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease, padding 0.3s ease;
+  padding:0 1.5rem;
+}
+.faq-item.open .faq-a{
+  max-height:500px;
+  padding:0 1.5rem 1.4rem;
+}
+.faq-a p{color:var(--text);font-size:0.95rem;line-height:1.7;}
+
+/* FINAL CTA */
+.final-cta{
+  text-align:center;
+  padding:6.5rem 1.5rem;
+  background:var(--bg-alt);
+  position:relative;
+}
+.final-cta::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at center,var(--gold-glow),transparent 65%);
+  pointer-events:none;
+}
+.final-cta-inner{position:relative;max-width:720px;margin:0 auto;}
+.final-cta h2{margin-bottom:1rem;}
+.final-cta p{font-size:1.1rem;margin-bottom:2.2rem;}
+.final-trust{
+  display:flex;
+  gap:1.6rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:2rem;
+  font-size:0.88rem;
+  color:#cfcfcf;
+}
+
+/* FOOTER */
+footer{
+  background:#080808;
+  padding:4.5rem 0 2rem;
+  border-top:1px solid var(--border);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:3rem;
+  margin-bottom:3rem;
+}
+.footer-brand .logo{margin-bottom:1rem;}
+.footer-brand p{font-size:0.92rem;color:var(--text);margin-bottom:1.2rem;max-width:280px;}
+.social-icons{display:flex;gap:0.6rem;}
+.social-icons a{
+  width:38px;height:38px;
+  border-radius:8px;
+  background:var(--card);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:#d0d0d0;
+  transition:all 0.25s ease;
+}
+.social-icons a:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+  transform:translateY(-2px);
+}
+.footer-col h4{
+  font-family:var(--sans);
+  font-size:0.85rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--white);
+  font-weight:500;
+  margin-bottom:1.2rem;
+}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:0.6rem;}
+.footer-col a{
+  font-size:0.92rem;
+  color:var(--text);
+  transition:color 0.2s ease;
+}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+  font-size:0.86rem;
+  color:var(--text-dim);
+}
+.footer-bottom .legal-links{display:flex;gap:1.5rem;}
+.footer-bottom a:hover{color:var(--gold);}
+
+/* FADE IN ANIMATION */
+.fade-in{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  section{padding:5rem 0;}
+  .nav-links{
+    position:fixed;
+    top:64px;left:0;right:0;
+    background:rgba(14,14,14,0.97);
+    backdrop-filter:blur(14px);
+    flex-direction:column;
+    padding:1.5rem;
+    gap:1.2rem;
+    border-bottom:1px solid var(--border);
+    transform:translateY(-120%);
+    transition:transform 0.3s ease;
+    align-items:flex-start;
+  }
+  .nav-links.open{transform:translateY(0);}
+  .nav-links a{font-size:1rem;}
+  .hamburger{display:block;}
+  .hero{
+    background-attachment:scroll;
+    min-height:90vh;
+  }
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn{width:100%;}
+  .demo-buttons{grid-template-columns:1fr;}
+  .features-grid{grid-template-columns:1fr;}
+  .website-cols{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+  .footer-brand{grid-column:1 / -1;}
+  .live-demo-box{padding:2rem 1.4rem;}
+  .pricing-card{padding:2.4rem 1.6rem;}
+  .price-new{font-size:3rem;}
+  .trust-badges{gap:1rem;font-size:0.82rem;}
+}
+@media(max-width:480px){
+  section{padding:4rem 0;}
+  .container{padding:0 1.1rem;}
+  .steps{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+  .final-trust{gap:1rem;font-size:0.82rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo"><span class="aura">Aura</span><span class="sync">Sync</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#problems">Πρόβλημα</a></li>
+      <li><a href="#features">Λύση</a></li>
+      <li><a href="#how">Πώς Δουλεύει</a></li>
+      <li><a href="#pricing">Τιμή</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#cta" class="nav-cta">Ξεκίνα Δωρεάν</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">ΤΟ #1 ALL-IN-ONE ΣΥΣΤΗΜΑ ΓΙΑ ΚΟΥΡΕΙΑ ΣΤΗΝ ΕΛΛΑΔΑ</span>
+    <h1>Γέμισε την ατζέντα σου, <span class="accent">ακόμα και την ώρα που κουρεύεις.</span></h1>
+    <p class="sub">Ο AuraBot AI βοηθός απαντάει στο Instagram, κλείνει ραντεβού και φέρνει πίσω τους πελάτες σου — εντελώς αυτόματα.</p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn btn-primary btn-lg">Ξεκίνα 14 Ημέρες Δωρεάν →</a>
+      <a href="#features" class="btn btn-ghost btn-lg">Δες πώς δουλεύει</a>
+    </div>
+    <div class="trust-badges">
+      <span><i class="fa-solid fa-check"></i> 0% Προμήθεια</span>
+      <span><i class="fa-solid fa-check"></i> Απεριόριστα SMS</span>
+      <span><i class="fa-solid fa-check"></i> Ρύθμιση σε 1 ημέρα</span>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMO -->
+<section class="live-demo-section">
+  <div class="container">
+    <div class="live-demo-box fade-in">
+      <p class="live-demo-caption">Μην πιστεύεις μόνο τα λόγια μας. Δες την AuraSync σε δράση σε πραγματικό χρόνο.</p>
+      <div class="demo-buttons">
+        <a href="https://demo.aurasync.gr" target="_blank" rel="noopener" class="demo-btn">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span class="label">Δοκίμασε το Booking (Live Demo)</span>
+          <span class="sub">Δες πώς κλείνει ραντεβού ένας πελάτης σου σε 15 δευτερόλεπτα.</span>
+        </a>
+        <a href="https://ig.me/aurasync" target="_blank" rel="noopener" class="demo-btn">
+          <i class="fa-brands fa-instagram"></i>
+          <span class="label">Μίλα με τον AuraBot (Instagram Demo)</span>
+          <span class="sub">Στείλε "Γεια" στο Instagram μας και δες το AI να απαντάει αυτόματα.</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="alt" id="problems">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eyebrow">ΤΟ ΚΟΣΤΟΣ ΤΗΣ ΑΔΡΑΝΕΙΑΣ</span>
+      <h2>Κάθε αναπάντητη κλήση είναι ένας πελάτης που θα εξυπηρετηθεί από τον ανταγωνισμό.</h2>
+    </div>
+    <div class="problems-grid">
+      <div class="problem-card fade-in">
+        <div class="problem-icon"><i class="fa-solid fa-calendar-xmark"></i></div>
+        <h3>Χαμένα ραντεβού</h3>
+        <p>30% των πελατών δεν εμφανίζεται. 2-3 άδειες καρέκλες κάθε μέρα — και χαμένα έσοδα.</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-icon"><i class="fa-solid fa-phone-slash"></i></div>
+        <h3>Αναπάντητες κλήσεις</h3>
+        <p>Κουρεύεις, το τηλέφωνο χτυπάει, ο πελάτης πάει στον επόμενο κουρέα της γειτονιάς.</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-icon"><i class="fa-solid fa-eye-slash"></i></div>
+        <h3>Αόρατος Online</h3>
+        <p>12 κριτικές εσύ, 200 ο διπλανός. Στο Google, η ορατότητα είναι το παν.</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>Χωρίς ψηφιακή παρουσία</h3>
+        <p>DMs χωρίς απάντηση, κανένα website, σαν να μην υπάρχεις στον ψηφιακό κόσμο.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eyebrow">Η ΛΥΣΗ</span>
+      <h2>Έξι εργαλεία που δουλεύουν για σένα <em style="font-style:italic;color:var(--gold);">24/7</em></h2>
+      <p class="section-sub">Σχεδιασμένα για κουρεία στην Ελλάδα. Στα Ελληνικά. Με ελληνική υποστήριξη.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <span class="tag">AI</span>
+        <div class="feature-icon"><i class="fa-solid fa-robot"></i></div>
+        <h3>AuraBot AI</h3>
+        <p>Απαντάει στο Instagram & Facebook, κλείνει ραντεβού και προωθεί υπηρεσίες 24/7 — σαν ένας digital υπάλληλος που δεν κοιμάται ποτέ.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="tag">ΑΠΕΡΙΟΡΙΣΤΑ*</span>
+        <div class="feature-icon"><i class="fa-solid fa-comment-sms"></i></div>
+        <h3>3x SMS Reminders</h3>
+        <p>Επιβεβαίωση + 1 ημέρα πριν + 2 ώρες πριν. Μειώνει τα no-shows έως 80%. Χωρίς χρέωση ανά SMS.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="tag">AUTO-REPLY</span>
+        <div class="feature-icon"><i class="fa-solid fa-comment-dots"></i></div>
+        <h3>Missed Call Text-Back</h3>
+        <p>Όταν δεν προλαβαίνεις να απαντήσεις, ο πελάτης λαμβάνει αμέσως SMS με booking link. Καμία απώλεια.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="tag">REPUTATION</span>
+        <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+        <h3>Smart Reviews</h3>
+        <p>Τα 4-5★ πάνε αυτόματα στο Google. Τα υπόλοιπα έρχονται σε σένα ιδιωτικά — με δυνατότητα να απαντήσεις και να διορθώσεις.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="tag">BOOKING</span>
+        <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+        <h3>Online Booking 24/7</h3>
+        <p>Custom branded σελίδα — όχι marketplace. Ο πελάτης κλείνει από κινητό, Instagram ή Google — όποτε θέλει.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <span class="tag">WIN-BACK</span>
+        <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <h3>Reactivation</h3>
+        <p>Αν ένας πελάτης δεν έρθει 45 μέρες, λαμβάνει αυτόματα SMS. Φέρνει πίσω τους χαμένους — χωρίς να κάνεις τίποτα.</p>
+      </div>
+    </div>
+    <p class="section-footnote">*Fair Usage Policy — έως 2.000 SMS/μήνα</p>
+  </div>
+</section>
+
+<!-- WEBSITE -->
+<section class="alt2">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eyebrow">Η ΨΗΦΙΑΚΗ ΣΟΥ ΒΙΤΡΙΝΑ</span>
+      <h2>Το δικό σου Premium Website —<br>Αξίας <span style="color:var(--gold);">€300</span>. Δώρο.</h2>
+      <p class="section-sub">Δεν είσαι ένα ακόμα link σε ένα marketplace. Είσαι brand.</p>
+    </div>
+    <div class="website-cols">
+      <div class="website-col fade-in">
+        <i class="fa-solid fa-bolt"></i>
+        <h4>Ταχύτητα</h4>
+        <p>Φορτώνει σε λιγότερο από 2 δευτερόλεπτα. Κανείς δεν περιμένει.</p>
+      </div>
+      <div class="website-col fade-in">
+        <i class="fa-solid fa-mobile-screen"></i>
+        <h4>100% Mobile</h4>
+        <p>Σχεδιασμένο πρώτα για κινητό — εκεί που σε ψάχνουν οι πελάτες.</p>
+      </div>
+      <div class="website-col fade-in">
+        <i class="fa-solid fa-gem"></i>
+        <h4>Δικό σου Brand</h4>
+        <p>Όνομα, χρώματα, λογότυπο, φωτογραφίες — όπως τα θες εσύ.</p>
+      </div>
+    </div>
+    <div class="website-cta-wrap fade-in">
+      <a href="#cta" class="btn btn-ghost">Δες ένα Demo Website →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section>
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eyebrow">Η ΔΙΑΦΟΡΑ</span>
+      <h2>Σύγκριση με τις Άλλες Διαθέσιμες Επιλογές</h2>
+    </div>
+    <div class="table-wrap fade-in">
+      <table class="comparison">
+        <thead>
+          <tr>
+            <th>Χαρακτηριστικό</th>
+            <th>Fresha</th>
+            <th>Booksy</th>
+            <th class="aurasync-col">AuraSync</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Μηνιαίο κόστος</td>
+            <td>"Δωρεάν" (αλλά…)</td>
+            <td>€50-70</td>
+            <td class="aurasync-cell">€119 (Όλα μέσα)</td>
+          </tr>
+          <tr>
+            <td>Προμήθεια</td>
+            <td><span class="no">20% νέος πελάτης</span></td>
+            <td>0%</td>
+            <td class="aurasync-cell"><span class="yes">✅ 0%</span></td>
+          </tr>
+          <tr>
+            <td>SMS Reminders</td>
+            <td>Περιορισμένα + χρέωση</td>
+            <td>1 reminder</td>
+            <td class="aurasync-cell"><span class="yes">✅ 3 — Απεριόριστα*</span></td>
+          </tr>
+          <tr>
+            <td>AI Bot</td>
+            <td><span class="no">❌</span></td>
+            <td><span class="no">❌</span></td>
+            <td class="aurasync-cell"><span class="yes">✅ AuraBot AI</span></td>
+          </tr>
+          <tr>
+            <td>Missed Call Text-Back</td>
+            <td><span class="no">❌</span></td>
+            <td><span class="no">❌</span></td>
+            <td class="aurasync-cell"><span class="yes">✅</span></td>
+          </tr>
+          <tr>
+            <td>Review Management</td>
+            <td>Βασικό</td>
+            <td>Βασικό</td>
+            <td class="aurasync-cell"><span class="yes">✅ Smart Routing</span></td>
+          </tr>
+          <tr>
+            <td>Custom Website</td>
+            <td><span class="no">❌ Marketplace</span></td>
+            <td><span class="no">❌ Marketplace</span></td>
+            <td class="aurasync-cell"><span class="yes">✅ Premium branded</span></td>
+          </tr>
+          <tr>
+            <td>Reactivation</td>
+            <td><span class="no">❌</span></td>
+            <td><span class="no">❌</span></td>
+            <td class="aurasync-cell"><span class="yes">✅ Αυτόματο</span></td>
+          </tr>
+          <tr>
+            <td>Γλώσσα</td>
+            <td>EN</td>
+            <td>EN</td>
+            <td class="aurasync-cell"><span class="yes">🇬🇷 Ελληνικά</span></td>
+          </tr>
+          <tr>
+            <td>Onboarding</td>
+            <td>Self-service</td>
+            <td>Self-service</td>
+            <td class="aurasync-cell"><span class="yes">✅ Το αναλαμβάνουμε εμείς</span></td>
+          </tr>
+          <tr class="cost-row">
+            <td>Πραγματικό κόστος (200 ραντ.)</td>
+            <td><span class="no">€110-150</span></td>
+            <td>€50-70</td>
+            <td class="aurasync-cell"><span class="yes">✅ €119</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="comparison-tagline fade-in">Μια συνδρομή. Ολοκληρωμένη ψηφιακή παρουσία. Το δικό σου brand.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="alt" id="how">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eyebrow">ΑΠΟ ΤΟ 0 ΣΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ</span>
+      <h2>Τέσσερα βήματα. Μία ημέρα. <em style="font-style:italic;color:var(--gold);">Γεμάτη ατζέντα.</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step fade-in">
+        <div class="step-num">01</div>
+        <h3>Εγγραφή</h3>
+        <p>60 δευτερόλεπτα. Βάζεις τα στοιχεία σου και ξεκινάς.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">02</div>
+        <h3>Μαθαίνουμε</h3>
+        <p>Μαθαίνουμε την αισθητική και τις ανάγκες σου.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">03</div>
+        <h3>Εμείς στήνουμε τα πάντα</h3>
+        <p>Σε λιγότερο από 24 ώρες το σύστημά σου είναι έτοιμο — website, booking, automations, Google Business.</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">04</div>
+        <h3>Αποτελέσματα</h3>
+        <p>Από την πρώτη εβδομάδα: λιγότερα no-shows, νέα ραντεβού αυτόματα, 5-star reviews.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eyebrow">ΤΙΜΟΛΟΓΗΣΗ</span>
+      <h2>Ένα Πλάνο. <em style="font-style:italic;color:var(--gold);">Τελείως Διαφορετική Παρουσία.</em></h2>
+    </div>
+    <div class="pricing-wrap fade-in">
+      <div class="pricing-card">
+        <span class="pricing-badge">★ ALL-IN-ONE</span>
+        <h3>AuraSync Pro</h3>
+        <div class="price-row">
+          <span class="price-old">€149</span>
+          <span class="price-new">€119</span>
+          <span class="price-period">/μήνα</span>
+        </div>
+        <div class="setup-line">Setup: €199 ΔΩΡΕΑΝ</div>
+        <ul class="feature-list">
+          <li><i class="fa-solid fa-check"></i> Online Booking 24/7</li>
+          <li><i class="fa-solid fa-check"></i> 3x SMS Reminders — ΑΠΕΡΙΟΡΙΣΤΑ*</li>
+          <li><i class="fa-solid fa-check"></i> AuraBot AI</li>
+          <li><i class="fa-solid fa-check"></i> Missed Call Text-Back</li>
+          <li><i class="fa-solid fa-check"></i> Smart Review Management</li>
+          <li><i class="fa-solid fa-check"></i> Reactivation 45 ημερών</li>
+          <li><i class="fa-solid fa-check"></i> Custom Website αξίας €300</li>
+          <li><i class="fa-solid fa-check"></i> Reports & έλεγχος ραντεβού από κινητό ή υπολογιστή</li>
+          <li><i class="fa-solid fa-check"></i> Το αναλαμβάνουμε εμείς — Ελληνική υποστήριξη</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary btn-lg" style="width:100%;">Ξεκίνα 14 Ημέρες Δωρεάν →</a>
+        <p class="pricing-note">Απαιτείται κάρτα για ενεργοποίηση AI. Ακύρωση ανά πάσα στιγμή.</p>
+      </div>
+    </div>
+    <p class="section-footnote">*Fair Usage Policy — έως 2.000 SMS/μήνα</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt2" id="faq">
+  <div class="container">
+    <div class="section-head fade-in">
+      <span class="eyebrow">ΑΠΟΡΙΕΣ</span>
+      <h2>Συχνές Ερωτήσεις</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-in">
+        <button class="faq-q">Τα SMS είναι πραγματικά απεριόριστα;<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Ναι, χωρίς χρέωση ανά μήνυμα. Παρέχουμε Fair Usage Policy έως 2.000 SMS/μήνα — αντιστοιχεί σε πάνω από 400 ολοκληρωμένα ραντεβού με όλες τις υπενθυμίσεις τους, συμπεριλαμβανομένων των SMS για χαμένες κλήσεις. Χωρίς κρυφά κόστη.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-q">Χρειάζομαι τεχνικές γνώσεις;<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Καμία. Το αναλαμβάνουμε εμείς. Σε λιγότερο από 24 ώρες είσαι live.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-q">Τι γίνεται αν θέλω να ακυρώσω;<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Ακυρώνεις με ένα μήνυμα. Χωρίς σύμβαση, χωρίς ποινές.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-q">Πώς δουλεύει το AI bot;<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Ο AuraBot ενεργοποιείται ή απενεργοποιείται με ένα click από το κινητό σου. Μπορείς επίσης να επιλέξεις συγκεκριμένα άτομα που δεν θα λαμβάνουν αυτόματη απάντηση. Αν θέλεις να μιλήσεις εσύ με τον πελάτη, απλώς ξεκίνα τη συνομιλία — ο bot σταματάει αυτόματα και παραχωρεί τη σειρά.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-q">Μπορώ να κρατήσω το τωρινό μου νούμερο για το Missed Call Text-Back;<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Φυσικά. Μέσω μιας απλής εκτροπής, το σύστημα αναγνωρίζει πότε χάνετε μια κλήση στο κινητό ή το σταθερό σας και στέλνει αυτόματα SMS για booking. Δεν χρειάζεται να αλλάξετε τίποτα στην επικοινωνία σας.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-q">Το website ανήκει σε μένα;<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><p>100%. Δικό σου domain, δικό σου brand. Αν ποτέ αποφασίσεις να διακόψεις, σου παραδίδουμε τον πλήρη κώδικα (HTML/CSS) για να τον φιλοξενήσεις όπου επιθυμείς. Δεν είσαι εγκλωβισμένος πουθενά.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <button class="faq-q">Γιατί κοστίζει €119 ενώ η Fresha είναι δωρεάν;<i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-a"><p>Γιατί η Fresha δεν είναι δωρεάν. Με 200 ραντεβού/μήνα πληρώνεις €110-150 σε προμήθειες και SMS. Εμείς δίνουμε τα πάντα στα €119 — AI bot, website, onboarding — χωρίς κρυφές χρεώσεις.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cta">
+  <div class="final-cta-inner fade-in">
+    <h2>Έτοιμος να σταματήσεις να χάνεις πελάτες;</h2>
+    <p>14 ημέρες δωρεάν. Κανένα ρίσκο. <em style="font-style:italic;color:var(--gold);">Μόνο αποτελέσματα.</em></p>
+    <a href="#cta" class="btn btn-primary btn-lg">Ξεκίνα Τώρα →</a>
+    <div class="final-trust">
+      <span>🛡️ Ασφαλείς πληρωμές</span>
+      <span>🇬🇷 Ελληνική υποστήριξη</span>
+      <span>↩️ Ακύρωση οποιαδήποτε στιγμή</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><span class="aura">Aura</span><span class="sync">Sync</span></div>
+        <p>Η premium πλατφόρμα για κουρεία στην Ελλάδα.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Πλατφόρμα</h4>
+        <ul>
+          <li><a href="#features">Δυνατότητες</a></li>
+          <li><a href="#pricing">Τιμή</a></li>
+          <li><a href="#how">Πώς δουλεύει</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Επικοινωνία</h4>
+        <ul>
+          <li><a href="mailto:info@ayrasync.com">info@ayrasync.com</a></li>
+          <li><a href="https://wa.me/" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="color:var(--gold);"></i> WhatsApp</a></li>
+          <li>Αθήνα, Ελλάδα</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Νομικά</h4>
+        <ul>
+          <li><a href="#">Όροι Χρήσης</a></li>
+          <li><a href="#">Πολιτική Απορρήτου</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AuraSync. All rights reserved.</span>
+      <div class="legal-links">
+        <a href="#">Όροι Χρήσης</a>
+        <a href="#">Πολιτική Απορρήτου</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Sticky nav blur
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// IntersectionObserver fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
