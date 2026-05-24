@@ -373,8 +373,8 @@
 <!-- NAV -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="aura">Aura</span><span class="sync">Sync</span></a>
-    <a href="index.html" class="nav-back"><i class="fa-solid fa-arrow-left"></i> Πίσω</a>
+    <a href="https://ayrasync.gr" class="logo"><span class="aura">Aura</span><span class="sync">Sync</span></a>
+    <a href="https://ayrasync.gr" class="nav-back"><i class="fa-solid fa-arrow-left"></i> Πίσω</a>
   </div>
 </nav>
 
@@ -455,9 +455,9 @@
     <!-- SUCCESS STATE -->
     <div class="success-state" id="successState">
       <div class="success-icon"><i class="fa-solid fa-check"></i></div>
-      <h3>Τέλεια! Σε πήραμε!</h3>
-      <p>Θα επικοινωνήσουμε μαζί σου <strong style="color:var(--white);">εντός 24 ωρών</strong> για να ξεκινήσουμε. Σε υπενθυμίζουμε ότι το setup είναι εντελώς δωρεάν.</p>
-      <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Πίσω στην αρχική</a>
+      <h3>Ευχαριστούμε για το ενδιαφέρον!</h3>
+      <p>Έχουμε τα στοιχεία σου και θα επικοινωνήσουμε μαζί σου <strong style="color:var(--white);">εντός 24 ωρών</strong>. Το setup είναι εντελώς δωρεάν.</p>
+      <a href="https://ayrasync.gr" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Πίσω στην αρχική</a>
     </div>
 
   </div>
@@ -501,7 +501,6 @@
     submitBtn.disabled = true;
     submitBtn.classList.add('loading');
 
-    // Split name into first/last for GHL
     const nameParts = name.split(' ');
     const firstName = nameParts[0] || name;
     const lastName = nameParts.slice(1).join(' ') || '';
@@ -509,7 +508,6 @@
     const payload = {
       firstName,
       lastName,
-      name,
       phone,
       email,
       ...(shop && { companyName: shop }),
@@ -520,12 +518,10 @@
     try {
       await fetch(GHL_WEBHOOK, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(payload),
-        mode: 'no-cors'
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
-      // With no-cors we can't read the response, but if no network error = success
       formState.style.display = 'none';
       successState.style.display = 'block';
 
