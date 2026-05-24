@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ξεκίνα Δωρεάν — AuraSync</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root{
+      --bg:#0e0e0e;
+      --bg-alt:#141414;
+      --card:#222222;
+      --border:#333333;
+      --gold:#D4A853;
+      --gold-soft:rgba(212,168,83,0.4);
+      --gold-glow:rgba(212,168,83,0.15);
+      --white:#ffffff;
+      --text:#b0b0b0;
+      --text-dim:#888888;
+      --green:#22c55e;
+      --red:#ef4444;
+      --serif:'Cormorant Garamond', Georgia, serif;
+      --sans:'Outfit', system-ui, -apple-system, sans-serif;
+      --radius:14px;
+      --radius-sm:8px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:var(--sans);
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{color:inherit;text-decoration:none;}
+
+    /* NAV */
+    nav.navbar{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:100;
+      padding:1.1rem 0;
+      background:rgba(14,14,14,0.85);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 1.5rem;
+    }
+    .logo{font-family:var(--serif);font-size:1.7rem;font-weight:500;}
+    .logo .aura{color:var(--white);}
+    .logo .sync{color:var(--gold);font-style:italic;font-weight:600;}
+
+    .nav-back{
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      font-size:0.9rem;
+      color:var(--text);
+      transition:color 0.2s ease;
+    }
+    .nav-back:hover{color:var(--gold);}
+
+    /* MAIN */
+    main{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:7rem 1.5rem 4rem;
+      position:relative;
+    }
+
+    main::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:radial-gradient(ellipse at 50% 40%, rgba(212,168,83,0.07) 0%, transparent 65%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    /* CARD */
+    .signup-card{
+      position:relative;
+      z-index:1;
+      background:var(--card);
+      border:1px solid var(--gold-soft);
+      border-radius:var(--radius);
+      padding:3rem 2.8rem;
+      width:100%;
+      max-width:480px;
+      box-shadow:0 40px 100px -30px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,168,83,0.08);
+    }
+
+    .card-eyebrow{
+      font-size:0.75rem;
+      font-weight:500;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:0.8rem;
+      display:block;
+    }
+
+    .card-title{
+      font-family:var(--serif);
+      font-size:2.2rem;
+      font-weight:500;
+      color:var(--white);
+      line-height:1.15;
+      margin-bottom:0.6rem;
+    }
+    .card-title em{color:var(--gold);font-style:italic;}
+
+    .card-sub{
+      font-size:0.95rem;
+      color:var(--text);
+      margin-bottom:2.2rem;
+      line-height:1.6;
+    }
+
+    /* FORM */
+    .form-group{
+      margin-bottom:1.2rem;
+    }
+
+    label{
+      display:block;
+      font-size:0.85rem;
+      font-weight:500;
+      color:#d0d0d0;
+      margin-bottom:0.45rem;
+      letter-spacing:0.01em;
+    }
+
+    .input-wrap{
+      position:relative;
+    }
+
+    .input-wrap i{
+      position:absolute;
+      left:1rem;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--text-dim);
+      font-size:0.95rem;
+      pointer-events:none;
+      transition:color 0.2s ease;
+    }
+
+    input{
+      width:100%;
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:var(--radius-sm);
+      padding:0.85rem 1rem 0.85rem 2.7rem;
+      font-family:var(--sans);
+      font-size:0.97rem;
+      color:var(--white);
+      outline:none;
+      transition:border-color 0.2s ease, background 0.2s ease;
+    }
+
+    input::placeholder{color:var(--text-dim);}
+
+    input:focus{
+      border-color:var(--gold);
+      background:rgba(212,168,83,0.04);
+    }
+
+    input:focus + i,
+    .input-wrap:has(input:focus) i{
+      color:var(--gold);
+    }
+
+    /* swap icon z-order for the :has trick */
+    .input-wrap i{z-index:1;}
+
+    /* Textarea */
+    textarea{
+      width:100%;
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:var(--radius-sm);
+      padding:0.85rem 1rem 0.85rem 2.7rem;
+      font-family:var(--sans);
+      font-size:0.97rem;
+      color:var(--white);
+      outline:none;
+      resize:vertical;
+      min-height:90px;
+      transition:border-color 0.2s ease, background 0.2s ease;
+      line-height:1.5;
+    }
+    textarea::placeholder{color:var(--text-dim);}
+    textarea:focus{
+      border-color:var(--gold);
+      background:rgba(212,168,83,0.04);
+    }
+    .input-wrap:has(textarea) i{top:1rem;transform:none;}
+
+    /* Optional badge */
+    .label-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:0.45rem;
+    }
+    .optional-tag{
+      font-size:0.73rem;
+      color:var(--text-dim);
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--border);
+      padding:0.15rem 0.5rem;
+      border-radius:999px;
+      letter-spacing:0.04em;
+    }
+
+    /* Submit */
+    .btn-submit{
+      width:100%;
+      margin-top:0.8rem;
+      padding:1.05rem;
+      background:var(--gold);
+      color:#0e0e0e;
+      border:none;
+      border-radius:999px;
+      font-family:var(--sans);
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.5rem;
+      transition:all 0.25s ease;
+      letter-spacing:0.01em;
+    }
+
+    .btn-submit:hover:not(:disabled){
+      background:#e0b865;
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px -10px rgba(212,168,83,0.5);
+    }
+
+    .btn-submit:disabled{
+      opacity:0.6;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    .btn-submit .spinner{
+      width:18px;height:18px;
+      border:2px solid rgba(0,0,0,0.25);
+      border-top-color:#0e0e0e;
+      border-radius:50%;
+      animation:spin 0.7s linear infinite;
+      display:none;
+    }
+
+    .btn-submit.loading .spinner{display:block;}
+    .btn-submit.loading .btn-text{display:none;}
+
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    /* Trust */
+    .trust-row{
+      display:flex;
+      justify-content:center;
+      gap:1.4rem;
+      flex-wrap:wrap;
+      margin-top:1.4rem;
+      font-size:0.8rem;
+      color:var(--text-dim);
+    }
+    .trust-row span{display:inline-flex;align-items:center;gap:0.35rem;}
+    .trust-row i{color:var(--gold);font-size:0.75rem;}
+
+    /* SUCCESS STATE */
+    .success-state{
+      display:none;
+      text-align:center;
+      padding:1rem 0;
+    }
+
+    .success-icon{
+      width:72px;height:72px;
+      border-radius:50%;
+      background:rgba(34,197,94,0.12);
+      border:1px solid rgba(34,197,94,0.3);
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 1.5rem;
+      font-size:1.8rem;
+      color:var(--green);
+    }
+
+    .success-state h3{
+      font-family:var(--serif);
+      font-size:1.9rem;
+      color:var(--white);
+      margin-bottom:0.6rem;
+    }
+
+    .success-state p{
+      font-size:0.97rem;
+      color:var(--text);
+      line-height:1.6;
+      margin-bottom:1.8rem;
+    }
+
+    .btn-back{
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      padding:0.85rem 1.8rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.2);
+      color:var(--white);
+      font-size:0.95rem;
+      font-weight:500;
+      transition:all 0.2s ease;
+    }
+    .btn-back:hover{border-color:var(--gold);color:var(--gold);}
+
+    /* ERROR */
+    .error-msg{
+      display:none;
+      margin-top:0.8rem;
+      padding:0.75rem 1rem;
+      background:rgba(239,68,68,0.08);
+      border:1px solid rgba(239,68,68,0.25);
+      border-radius:var(--radius-sm);
+      font-size:0.88rem;
+      color:#f87171;
+      text-align:center;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      padding:1.8rem;
+      font-size:0.82rem;
+      color:var(--text-dim);
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:520px){
+      .signup-card{padding:2.2rem 1.5rem;}
+      .card-title{font-size:1.85rem;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="aura">Aura</span><span class="sync">Sync</span></a>
+    <a href="index.html" class="nav-back"><i class="fa-solid fa-arrow-left"></i> Πίσω</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <div class="signup-card">
+
+    <!-- FORM STATE -->
+    <div id="formState">
+      <span class="card-eyebrow">14 ΗΜΕΡΕΣ ΔΩΡΕΑΝ</span>
+      <h1 class="card-title">Ξεκίνα <em>σήμερα.</em></h1>
+      <p class="card-sub">Συμπλήρωσε τα στοιχεία σου και θα επικοινωνήσουμε μαζί σου άμεσα για να στήσουμε το σύστημά σου.</p>
+
+      <form id="signupForm" novalidate>
+        <div class="form-group">
+          <label for="name">Ονοματεπώνυμο</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="name" name="name" placeholder="π.χ. Γιάννης Παπαδόπουλος" autocomplete="name" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Τηλέφωνο</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-phone"></i>
+            <input type="tel" id="phone" name="phone" placeholder="π.χ. 6941234567" autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" id="email" name="email" placeholder="π.χ. giannis@email.com" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="label-row">
+            <label for="shop" style="margin-bottom:0;">Όνομα Κουρείου</label>
+            <span class="optional-tag">Προαιρετικό</span>
+          </div>
+          <div class="input-wrap">
+            <i class="fa-solid fa-scissors"></i>
+            <input type="text" id="shop" name="shop" placeholder="π.χ. Barber House Κολωνάκι">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="label-row">
+            <label for="message" style="margin-bottom:0;">Κάτι που θέλεις να μας πεις;</label>
+            <span class="optional-tag">Προαιρετικό</span>
+          </div>
+          <div class="input-wrap">
+            <i class="fa-solid fa-comment"></i>
+            <textarea id="message" name="message" placeholder="π.χ. Έχω 2 καρέκλες, θέλω να δω πώς λειτουργεί το AI bot..."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span class="btn-text">Ξεκίνα Δωρεάν →</span>
+          <div class="spinner"></div>
+        </button>
+
+        <div class="error-msg" id="errorMsg">
+          <i class="fa-solid fa-circle-exclamation"></i> Κάτι πήγε στραβά. Δοκίμασε ξανά ή επικοινώνησε μαζί μας.
+        </div>
+      </form>
+
+      <div class="trust-row">
+        <span><i class="fa-solid fa-lock"></i> Ασφαλής αποστολή</span>
+        <span><i class="fa-solid fa-check"></i> Χωρίς spam</span>
+        <span><i class="fa-solid fa-check"></i> Ακύρωση οποιαδήποτε στιγμή</span>
+      </div>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="successState">
+      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+      <h3>Τέλεια! Σε πήραμε!</h3>
+      <p>Θα επικοινωνήσουμε μαζί σου <strong style="color:var(--white);">εντός 24 ωρών</strong> για να ξεκινήσουμε. Σε υπενθυμίζουμε ότι το setup είναι εντελώς δωρεάν.</p>
+      <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Πίσω στην αρχική</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>© 2026 AuraSync. Αθήνα, Ελλάδα.</footer>
+
+<script>
+  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/kohQTzA9sar17ZdxMcgS/webhook-trigger/2e1096d2-1c73-43bd-93e8-e9fe601f6c1d';
+
+  const form = document.getElementById('signupForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const errorMsg = document.getElementById('errorMsg');
+  const formState = document.getElementById('formState');
+  const successState = document.getElementById('successState');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.style.display = 'none';
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const shop = document.getElementById('shop').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // Basic validation
+    if (!name || !phone || !email) {
+      errorMsg.textContent = 'Συμπλήρωσε όνομα, τηλέφωνο και email.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorMsg.textContent = 'Εισάγαγε έγκυρο email.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    // Loading state
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+
+    // Split name into first/last for GHL
+    const nameParts = name.split(' ');
+    const firstName = nameParts[0] || name;
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    const payload = {
+      firstName,
+      lastName,
+      name,
+      phone,
+      email,
+      ...(shop && { companyName: shop }),
+      ...(message && { message }),
+      source: 'AuraSync Landing Page'
+    };
+
+    try {
+      await fetch(GHL_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        mode: 'no-cors' // GHL webhooks don't send CORS headers
+      });
+
+      // With no-cors we can't read the response, but if no network error = success
+      formState.style.display = 'none';
+      successState.style.display = 'block';
+
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+      errorMsg.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
