@@ -520,9 +520,9 @@
     try {
       await fetch(GHL_WEBHOOK, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(payload),
-        mode: 'no-cors' // GHL webhooks don't send CORS headers
+        mode: 'no-cors'
       });
 
       // With no-cors we can't read the response, but if no network error = success
