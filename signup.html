@@ -3,15 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YX48QNPBTB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YX48QNPBTB');
+  </script>
+
+  <!-- GHL External Tracking -->
+  <script
+    src="https://link.msgsndr.com/js/external-tracking.js"
+    data-tracking-id="tk_11e2ed62e3f8423890ec43a1e1f0cf77"
+    async>
+  </script>
   <title>Ξεκίνα Δωρεάν — AuraSync</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="preload" as="font" href="fonts/cormorant-garamond-500.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="fonts/outfit-400.woff2" type="font/woff2" crossorigin>
   <style>
+    @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/cormorant-garamond-400.woff2') format('woff2');}
+    @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url('fonts/cormorant-garamond-400italic.woff2') format('woff2');}
+    @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/cormorant-garamond-500.woff2') format('woff2');}
+    @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/cormorant-garamond-600.woff2') format('woff2');}
+    @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-display:swap;src:url('fonts/cormorant-garamond-600italic.woff2') format('woff2');}
+    @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/cormorant-garamond-700.woff2') format('woff2');}
+    @font-face{font-family:'Outfit';font-style:normal;font-weight:300;font-display:swap;src:url('fonts/outfit-300.woff2') format('woff2');}
+    @font-face{font-family:'Outfit';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/outfit-400.woff2') format('woff2');}
+    @font-face{font-family:'Outfit';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/outfit-500.woff2') format('woff2');}
+    @font-face{font-family:'Outfit';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/outfit-600.woff2') format('woff2');}
+    @font-face{font-family:'Outfit';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/outfit-700.woff2') format('woff2');}
+    .icon{display:inline-block;width:1em;height:1em;vertical-align:-0.125em;fill:currentColor;flex-shrink:0;}
+
     :root{
       --bg:#0e0e0e;
       --bg-alt:#141414;
@@ -376,7 +401,7 @@
 <nav class="navbar">
   <div class="nav-inner">
     <a href="https://ayrasync.gr" class="logo"><span class="aura">Aura</span><span class="sync">Sync</span></a>
-    <a href="https://ayrasync.gr" class="nav-back"><i class="fa-solid fa-arrow-left"></i> Πίσω</a>
+    <a href="https://ayrasync.gr" class="nav-back"><svg class="icon" aria-hidden="true" viewBox="0 0 448 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></i> Πίσω</a>
   </div>
 </nav>
 
@@ -394,7 +419,7 @@
         <div class="form-group">
           <label for="name">Ονοματεπώνυμο</label>
           <div class="input-wrap">
-            <i class="fa-solid fa-user"></i>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 448 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg></i>
             <input type="text" id="name" name="name" placeholder="π.χ. Γιάννης Παπαδόπουλος" autocomplete="name" required>
           </div>
         </div>
@@ -402,7 +427,7 @@
         <div class="form-group">
           <label for="phone">Τηλέφωνο</label>
           <div class="input-wrap">
-            <i class="fa-solid fa-phone"></i>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C11.2 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-11.2 38.6-27.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg></i>
             <input type="tel" id="phone" name="phone" placeholder="π.χ. 6941234567" autocomplete="tel" required>
           </div>
         </div>
@@ -410,7 +435,7 @@
         <div class="form-group">
           <label for="email">Email</label>
           <div class="input-wrap">
-            <i class="fa-solid fa-envelope"></i>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg></i>
             <input type="email" id="email" name="email" placeholder="π.χ. giannis@email.com" autocomplete="email" required>
           </div>
         </div>
@@ -421,7 +446,7 @@
             <span class="optional-tag">Προαιρετικό</span>
           </div>
           <div class="input-wrap">
-            <i class="fa-solid fa-scissors"></i>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 512 512"><path d="M.1 29.3C-1.4 19 5.7 9.1 15.9 7.5L64 0 512 256 64 512l-48.1-7.5c-10.3-1.6-17.3-11.5-15.8-21.8L16 384l-16-128L.1 29.3zM80 272a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm32-128a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg></i>
             <input type="text" id="shop" name="shop" placeholder="π.χ. Barber House Κολωνάκι">
           </div>
         </div>
@@ -432,7 +457,7 @@
             <span class="optional-tag">Προαιρετικό</span>
           </div>
           <div class="input-wrap">
-            <i class="fa-solid fa-comment"></i>
+            <svg class="icon" aria-hidden="true" viewBox="0 0 512 512"><path d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-.9-12.8 3.7-17.4c0 0 0 0 .1-.1c.1-.1.3-.2.4-.4c.3-.3.7-.7 1.2-1.2c1.1-1.2 2.7-3 4.8-5.5c4.1-5 9.6-12.2 15.1-21.6c10-17 19.5-38.8 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z"/></svg></i>
             <textarea id="message" name="message" placeholder="π.χ. Έχω 2 καρέκλες, θέλω να δω πώς λειτουργεί το AI bot..."></textarea>
           </div>
         </div>
@@ -443,23 +468,23 @@
         </button>
 
         <div class="error-msg" id="errorMsg">
-          <i class="fa-solid fa-circle-exclamation"></i> Κάτι πήγε στραβά. Δοκίμασε ξανά ή επικοινώνησε μαζί μας.
+          <svg class="icon" aria-hidden="true" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm-32 224a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg></i> Κάτι πήγε στραβά. Δοκίμασε ξανά ή επικοινώνησε μαζί μας.
         </div>
       </form>
 
       <div class="trust-row">
-        <span><i class="fa-solid fa-lock"></i> Ασφαλής αποστολή</span>
-        <span><i class="fa-solid fa-check"></i> Χωρίς spam</span>
-        <span><i class="fa-solid fa-check"></i> Ακύρωση οποιαδήποτε στιγμή</span>
+        <span><svg class="icon" aria-hidden="true" viewBox="0 0 448 512"><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg></i> Ασφαλής αποστολή</span>
+        <span><svg class="icon" aria-hidden="true" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.2 0z"/></svg></i> Χωρίς spam</span>
+        <span><svg class="icon" aria-hidden="true" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.2 0z"/></svg></i> Ακύρωση οποιαδήποτε στιγμή</span>
       </div>
     </div>
 
     <!-- SUCCESS STATE -->
     <div class="success-state" id="successState">
-      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+      <div class="success-icon"><svg class="icon" aria-hidden="true" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.2 0z"/></svg></i></div>
       <h3>Ευχαριστούμε για το ενδιαφέρον!</h3>
       <p>Έχουμε τα στοιχεία σου και θα επικοινωνήσουμε μαζί σου <strong style="color:var(--white);">εντός 24 ωρών</strong>. Το setup είναι εντελώς δωρεάν.</p>
-      <a href="https://ayrasync.gr" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Πίσω στην αρχική</a>
+      <a href="https://ayrasync.gr" class="btn-back"><svg class="icon" aria-hidden="true" viewBox="0 0 448 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></i> Πίσω στην αρχική</a>
     </div>
 
   </div>
